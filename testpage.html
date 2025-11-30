@@ -26,12 +26,13 @@
             padding: 0 15px;
         }
         
-        /* Header Styles - Updated to match Conch Canada website */
+        /* Header Styles - Updated to match Conch Canada website (grey) */
         header {
-            background: #1a3a5f;
-            color: white;
+            background: #f8f9fa;
+            color: #333;
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e9ecef;
         }
         
         .header-content {
@@ -55,6 +56,7 @@
         .logo h1 {
             font-size: 1.5rem;
             font-weight: 600;
+            color: #2c5a8a;
         }
         
         .contact-info {
@@ -68,6 +70,11 @@
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .contact-item i {
+            color: #2c5a8a;
         }
         
         /* Hero Section */
@@ -277,14 +284,14 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            min-width: 650px;
+            min-width: 550px;
         }
         
         th, td {
-            padding: 12px 10px;
+            padding: 10px 8px;
             text-align: left;
             border-bottom: 1px solid #e9ecef;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         th {
@@ -293,20 +300,58 @@
             color: #1a3a5f;
         }
         
+        /* Optimized column widths */
+        .series-col {
+            width: 12%;
+            min-width: 70px;
+        }
+        
+        .dimensions-col {
+            width: 15%;
+            min-width: 90px;
+            font-size: 0.8rem;
+        }
+        
+        .area-col {
+            width: 10%;
+            min-width: 60px;
+        }
+        
+        .quantity-col {
+            width: 10%;
+            min-width: 50px;
+        }
+        
+        .price-col {
+            width: 12%;
+            min-width: 70px;
+            font-size: 0.8rem;
+        }
+        
+        .total-col {
+            width: 15%;
+            min-width: 80px;
+        }
+        
+        .action-col {
+            width: 8%;
+            min-width: 40px;
+        }
+        
         .delete-btn {
             background: #e74c3c;
             color: white;
             border: none;
             border-radius: 4px;
-            padding: 6px 10px;
+            padding: 5px 8px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             transition: background 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
         }
         
         .delete-btn:hover {
@@ -428,8 +473,8 @@
             }
             
             th, td {
-                padding: 14px 15px;
-                font-size: 1rem;
+                padding: 12px 10px;
+                font-size: 0.9rem;
             }
         }
         
@@ -479,7 +524,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-home fa-2x"></i>
+                    <i class="fas fa-home fa-2x" style="color: #2c5a8a;"></i>
                     <h1>Conch Canada Windows</h1>
                 </div>
                 <div class="contact-info">
@@ -601,13 +646,13 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Series</th>
-                            <th>Dimensions</th>
-                            <th>Area</th>
-                            <th>Quantity</th>
-                            <th>Price per m²</th>
-                            <th>Total</th>
-                            <th></th>
+                            <th class="series-col">Series</th>
+                            <th class="dimensions-col">Dimensions</th>
+                            <th class="area-col">Area</th>
+                            <th class="quantity-col">Qty</th>
+                            <th class="price-col">Price/m²</th>
+                            <th class="total-col">Total</th>
+                            <th class="action-col"></th>
                         </tr>
                     </thead>
                     <tbody id="quote-items">
@@ -765,13 +810,13 @@
                     const row = document.createElement('tr');
                     
                     row.innerHTML = `
-                        <td>${window.series}</td>
-                        <td>${window.width}m × ${window.height}m</td>
-                        <td>${window.area} m²</td>
-                        <td>${window.quantity}</td>
-                        <td>$${window.pricePerM2.toFixed(2)}</td>
-                        <td>$${window.total}</td>
-                        <td><button class="delete-btn" data-index="${index}"><i class="fas fa-times"></i></button></td>
+                        <td class="series-col">${window.series}</td>
+                        <td class="dimensions-col">${window.width}m × ${window.height}m</td>
+                        <td class="area-col">${window.area} m²</td>
+                        <td class="quantity-col">${window.quantity}</td>
+                        <td class="price-col">$${window.pricePerM2.toFixed(2)}</td>
+                        <td class="total-col">$${window.total}</td>
+                        <td class="action-col"><button class="delete-btn" data-index="${index}"><i class="fas fa-times"></i></button></td>
                     `;
                     
                     quoteItems.appendChild(row);
